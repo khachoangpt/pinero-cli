@@ -9,6 +9,7 @@ export const createCommand = async () => {
     command: 'create',
     describe: 'Create a new Next.js project',
     handler: async () => {
+      const projectManager = await askForProjectManager()
       const projectName = await askForProjectName()
       const i18n = await askForI18n()
 
@@ -16,14 +17,15 @@ export const createCommand = async () => {
         execSync(
           `git clone https://github.com/khachoangpt/next-codebase-i18n ${projectName}`,
         )
-        execSync(`cd ${projectName} && rm -rf .git`)
-        return
+      } else {
+        execSync(
+          `git clone https://github.com/khachoangpt/next-codebase ${projectName}`,
+        )
       }
 
       execSync(
-        `git clone https://github.com/khachoangpt/next-codebase ${projectName}`,
+        `cd ${projectName} && rm -rf .git pnpm-lock.yaml && npm pkg set name="${projectName}" && ${projectManager} install`,
       )
-      execSync(`cd ${projectName} && rm -rf .git`)
     },
   }).argv
 }
@@ -59,4 +61,17 @@ const askForI18n = async () => {
     },
   ])
   return i18n
+}
+
+const askForProjectManager = async () => {
+  const { projectManager } = await inquirer.prompt([
+    {
+      type: 'select',
+      name: 'projectManager',
+      message: 'Which project manager do you want to use?',
+      choices: ['npm', 'yarn', 'pnpm'],
+      default: 'pnpm',
+    },
+  ])
+  return projectManager
 }
