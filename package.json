@@ -1,5 +1,5 @@
 {
-  "name": "next-base",
+  "name": "next-base-cli",
   "version": "0.0.12",
   "description": "A CLI tool to Create a Next.js Base",
   "scripts": {
@@ -32,7 +32,6 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",
     "@commitlint/config-conventional": "^19.4.1",
-    "@types/cross-spawn": "^6.0.6",
     "@types/node": "^22.5.4",
     "@types/yargs": "^17.0.33",
     "@typescript-eslint/eslint-plugin": "^8.4.0",
