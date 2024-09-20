@@ -86,13 +86,4 @@ Project structure
 └── tsconfig.json
 ```
 
-## Configuration
-
-### env
-
-- Create a `.env.local` file in the root directory of your project and use `.env.example` as a template file.
-- **SWAGGER_JSON_URL**: The URL of the OpenAPI specification (JSON format). I use it to generate `swagger.json` file in the `docs` folder to generate SDK for app.
-- **NEXT_PUBLIC_API_URL**: The URL of the backend API.
-- **NEXT_PUBLIC_MAINTENANCE_MODE**: `true/false` to enable/disable the maintenance mode.
-
 **I will continue to add more features in the future. Thanks for your time.**
